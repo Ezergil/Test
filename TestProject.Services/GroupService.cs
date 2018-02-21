@@ -2,9 +2,9 @@
 using TestProject.Domain;
 using TestProject.DomainAbstraction;
 
-namespace TestProject.Services
+namespace TestProject.Service
 {
-    public class GroupService : DomainService<Group>, IGroupService
+    public sealed class GroupService : DomainService<Group>, IGroupService
     {
         public GroupService(IRepository<Group> repository) : base(repository)
         {

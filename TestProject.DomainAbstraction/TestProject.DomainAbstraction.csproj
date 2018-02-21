@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -51,9 +52,17 @@
       <Project>{C9715260-679A-4CB9-AB29-E5B905CC67F6}</Project>
       <Name>TestProject.Abstraction</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TestProject.Common\TestProject.Common.csproj">
+      <Project>{9AC6D595-3279-42B6-8D67-A1B3643CC9C3}</Project>
+      <Name>TestProject.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestProject.Domain\TestProject.Domain.csproj">
       <Project>{92102A28-0D5F-499F-BF03-E3E83B2250FF}</Project>
       <Name>TestProject.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TestProject.MSSQLDataLayer\TestProject.MSSQLDataLayer.csproj">
+      <Project>{2F871C72-270A-440D-994A-F7C66D0B1CCD}</Project>
+      <Name>TestProject.MSSQLDataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

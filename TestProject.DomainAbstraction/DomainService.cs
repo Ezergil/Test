@@ -2,11 +2,12 @@
 using System.Linq;
 using System.Threading.Tasks;
 using TestProject.Abstraction;
+using TestProject.Common.Extensions;
 using TestProject.Domain;
 
 namespace TestProject.DomainAbstraction
 {
-    public abstract class DomainService<TEntity> : BaseService<TEntity>, IGroupParentsService where TEntity: BaseEntity, IGroupParents
+    public abstract class DomainService<TEntity> : BaseService<TEntity>, IGroupParentsService where TEntity: BaseEntity, IGroupParents, new()
     {
         protected DomainService(IRepository<TEntity> repository) : base(repository)
         {
@@ -16,7 +17,7 @@ namespace TestProject.DomainAbstraction
         public async Task<IEnumerable<Group>> GetParents(int entityId)
         {
             var entity = await GetByIdAsync(entityId);
-            return entity.Parents;
+            return entity.Parents.Flatten(p => p.Parents).Distinct();
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace TestProject.DomainAbstraction
             var parent = entity.Parents.FirstOrDefault(p => p.Id == parentId);
             if (!entity.Parents.Remove(parent))
             {
-                entity.Parents.Add(new Group { Id = parentId });
+                entity.Parents.Add(await GetByIdAsync(parentId) as Group);
             }
             await UpdateAsync(entity);
         }

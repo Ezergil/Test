@@ -26,7 +26,7 @@ namespace TestProject.MSSQLDataLayer
             return _dbSet.ToListAsync();
         }
 
-        public Task<TEntity> GetByIdAsync(int id)
+        public virtual Task<TEntity> GetByIdAsync(int id)
         {
             return _dbSet.FirstAsync(e => e.Id == id);
         }

@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using TestProject.WebFramework.DI;
 
 namespace TestProject.Web
 {
@@ -6,15 +7,19 @@ namespace TestProject.Web
     {
         public static void Register(HttpConfiguration config)
         {
-            // Конфигурация и службы веб-API
-
-            // Маршруты веб-API
             config.MapHttpAttributeRoutes();
+
+            WebCapsule.Initialize(config);
+
+            config.Routes.MapHttpRoute(
+                name: "DefaultApi2",
+                routeTemplate: "api/{controller}/{id}/details",
+                defaults: new { action = "details" }
+            );
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}"
             );
         }
     }

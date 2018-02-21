@@ -28,6 +28,16 @@ namespace TestProject.MSSQLDataLayer
                     cs.MapRightKey("GroupId");
                     cs.ToTable("UserGroups");
                 });
+
+            modelBuilder.Entity<Group>()
+                .HasMany(s => s.Parents)
+                .WithMany()
+                .Map(cs =>
+                {
+                    cs.MapLeftKey("ChildGroupId");
+                    cs.MapRightKey("ParentGroupId");
+                    cs.ToTable("GroupRelations");
+                }); ;
             base.OnModelCreating(modelBuilder);
         }
 

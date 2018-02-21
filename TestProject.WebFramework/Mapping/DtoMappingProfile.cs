@@ -8,10 +8,10 @@ namespace TestProject.WebFramework.Mapping
     {
         public DtoMappingProfile()
         {
-            CreateMap<Group, GroupListItemViewModel>();
-            CreateMap<GroupCreateBindingModel, Group>();
-            CreateMap<User, UserListItemViewModel>();
-            CreateMap<UserCreateBindingModel, User>();
+            CreateMap<Group, ListItemViewModel>();
+            CreateMap<CreateBindingModel, Group>();
+            CreateMap<User, ListItemViewModel>();
+            CreateMap<CreateBindingModel, User>();
         }
     }
 }

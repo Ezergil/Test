@@ -9,15 +9,17 @@ namespace TestProject.DomainAbstraction
 {
     public abstract class DomainService<TEntity> : BaseService<TEntity>, IGroupParentsService where TEntity: BaseEntity, IGroupParents, new()
     {
-        protected DomainService(IRepository<TEntity> repository) : base(repository)
+        private readonly IRepository<Group> _parentRepository;
+
+        protected DomainService(IRepository<TEntity> repository, IRepository<Group> parentRepository) : base(repository)
         {
-            
+            _parentRepository = parentRepository;
         }
 
         public async Task<IEnumerable<Group>> GetParents(int entityId)
         {
             var entity = await GetByIdAsync(entityId);
-            return entity.Parents.Flatten(p => p.Parents).Distinct();
+            return entity.Parents;
         }
 
         /// <summary>
@@ -32,7 +34,7 @@ namespace TestProject.DomainAbstraction
             var parent = entity.Parents.FirstOrDefault(p => p.Id == parentId);
             if (!entity.Parents.Remove(parent))
             {
-                entity.Parents.Add(await GetByIdAsync(parentId) as Group);
+                entity.Parents.Add(await _parentRepository.GetByIdAsync(parentId));
             }
             await UpdateAsync(entity);
         }

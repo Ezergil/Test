@@ -6,7 +6,7 @@ namespace TestProject.Services
 {
     public sealed class GroupService : DomainService<Group>, IGroupService
     {
-        public GroupService(IRepository<Group> repository) : base(repository)
+        public GroupService(IRepository<Group> repository, IRepository<Group> parentRepository) : base(repository, parentRepository)
         {
         }
     }

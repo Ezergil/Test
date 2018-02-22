@@ -4,14 +4,15 @@
   </h1>
   <hr />
   <div>
-    <input type="text" [(ngModel)]="recordId"/>
-    <a (click)="addRecord()">Create record</a>
+    <input type="text" [(ngModel)]="recordId" placeholder="Fill parent id"/>
+    <a (click)="addRecord()">Create parent</a>
   </div>
   <hr />
 
   <table class="table">
     <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Delete</th>
     </tr>
@@ -19,6 +20,7 @@
     <tbody>
     <tr *ngFor="let record of records">
       <td>{{ record.Id }}</td>
+      <td>{{ record.Name }}</td>
       <td><a (click)="deleteRecord(record.Id)">Delete</a></td>
     </tr>
     </tbody>

@@ -11,17 +11,19 @@
 
   <table class="table">
     <thead>
-      <tr>
-        <th>Name</th>
-        <th colspan="2">Action</th>
-      </tr>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th colspan="2">Action</th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let record of records">
-        <td>{{ record.Name }}</td>
-        <td><a routerLink="/{{type}}/details/{{record.Id}}">Details</a></td>
-        <td><a *ngIf="record.CouldBeDeleted" (click)="deleteRecord(record.Id)">Delete</a></td>
-      </tr>
+    <tr *ngFor="let record of records">
+      <td>{{ record.Id }}</td>
+      <td>{{ record.Name }}</td>
+      <td><a routerLink="/{{type}}/details/{{record.Id}}">Details</a></td>
+      <td><a *ngIf="record.CouldBeDeleted" (click)="deleteRecord(record.Id)">Delete</a></td>
+    </tr>
     </tbody>
   </table>
 </div>

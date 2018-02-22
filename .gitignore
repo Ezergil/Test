@@ -5,3 +5,4 @@ packages/
 */bin/*
 */obj/*
 TestProject.Web/bundles/
+TestProject.Web/dist/

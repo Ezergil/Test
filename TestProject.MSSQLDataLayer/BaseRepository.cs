@@ -15,10 +15,11 @@ namespace TestProject.MSSQLDataLayer
             _context = context;
         }
 
-        public Task AddAsync(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
-            _dbSet.Add(entity);
-            return _context.CommitAsync();
+            var result = _dbSet.Add(entity);
+            await _context.CommitAsync();
+            return result;
         }
 
         public Task<List<TEntity>> GetAllAsync()
@@ -37,10 +38,11 @@ namespace TestProject.MSSQLDataLayer
             return _context.CommitAsync();
         }
 
-        public Task DeleteByIdAsync(int id)
+        public async Task DeleteByIdAsync(int id)
         {
-            _context.SetAsDeleted(new TEntity { Id = id });
-            return _context.CommitAsync();
+            var entityToDelete = await GetByIdAsync(id);
+            _context.SetAsDeleted(entityToDelete);
+            await _context.CommitAsync();
         }
     }
 }

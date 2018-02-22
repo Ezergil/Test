@@ -5,7 +5,7 @@ namespace TestProject.Abstraction
 {
     public interface ICrudActions<TEntity> where TEntity : BaseEntity
     {
-        Task AddAsync(TEntity entity);
+        Task<TEntity> AddAsync(TEntity entity);
         Task<List<TEntity>> GetAllAsync();
         Task<TEntity> GetByIdAsync(int id);
         Task UpdateAsync(TEntity entity);

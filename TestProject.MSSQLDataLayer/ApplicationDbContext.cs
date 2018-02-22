@@ -31,7 +31,7 @@ namespace TestProject.MSSQLDataLayer
 
             modelBuilder.Entity<Group>()
                 .HasMany(s => s.Parents)
-                .WithMany()
+                .WithMany(s => s.Childs)
                 .Map(cs =>
                 {
                     cs.MapLeftKey("ChildGroupId");

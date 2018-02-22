@@ -7,5 +7,6 @@ namespace TestProject.Abstraction
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
+        public abstract bool CouldBeDeleted { get; }
     }
 }

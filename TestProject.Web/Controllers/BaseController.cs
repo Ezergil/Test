@@ -26,9 +26,9 @@ namespace TestProject.Web.Controllers
         {
             return Mapper.Map(await _service.GetAllAsync(), new List<ListItemViewModel>());
         }
-        public Task Post(CreateBindingModel model)
+        public async Task<ListItemViewModel> Post(CreateBindingModel model)
         {
-            return _service.AddAsync(Mapper.Map(model, new TEntity()));
+            return Mapper.Map(await _service.AddAsync(Mapper.Map(model, new TEntity())), new ListItemViewModel());
         }
         public Task Put(UpdateBindingModel model)
         {

@@ -12,7 +12,7 @@ namespace TestProject.Abstraction
         }
 
 
-        public Task AddAsync(TEntity entity)
+        public Task<TEntity> AddAsync(TEntity entity)
         {
             return _repository.AddAsync(entity);
         }

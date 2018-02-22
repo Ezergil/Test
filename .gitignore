@@ -4,3 +4,4 @@ packages/
 *.dll
 */bin/*
 */obj/*
+TestProject.Web/bundles/

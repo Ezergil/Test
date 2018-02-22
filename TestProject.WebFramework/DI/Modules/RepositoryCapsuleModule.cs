@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using TestProject.Abstraction;
+using TestProject.DomainAbstraction;
 using TestProject.MSSQLDataLayer;
 
 namespace TestProject.WebFramework.DI.Modules

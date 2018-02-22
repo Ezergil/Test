@@ -2,7 +2,7 @@
 using TestProject.Domain;
 using TestProject.DomainAbstraction;
 
-namespace TestProject.Service
+namespace TestProject.Services
 {
     public sealed class GroupService : DomainService<Group>, IGroupService
     {

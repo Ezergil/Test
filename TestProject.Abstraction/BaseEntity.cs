@@ -2,7 +2,7 @@
 
 namespace TestProject.Abstraction
 {
-    public class BaseEntity
+    public abstract class BaseEntity
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

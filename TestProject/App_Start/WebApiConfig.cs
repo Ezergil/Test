@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Headers;
+using System.Web.Http;
 using TestProject.WebFramework.DI;
 
 namespace TestProject.Web
@@ -21,6 +22,9 @@ namespace TestProject.Web
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}"
             );
+
+            config.Formatters.JsonFormatter.SupportedMediaTypes
+                .Add(new MediaTypeHeaderValue("text/html"));
         }
     }
 }

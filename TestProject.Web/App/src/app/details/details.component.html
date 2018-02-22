@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>
+    List
+  </h1>
+  <hr />
+  <div>
+    <input type="text" [(ngModel)]="recordId"/>
+    <a (click)="addRecord()">Create record</a>
+  </div>
+  <hr />
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let record of records">
+      <td>{{ record.Id }}</td>
+      <td><a (click)="deleteRecord(record.Id)">Delete</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

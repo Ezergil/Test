@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>
+    List
+  </h1>
+  <hr />
+  <div>
+    <input type="text" [(ngModel)]="recordName"/>
+    <a (click)="addRecord()">Create record</a>
+  </div>
+  <hr />
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of records">
+        <td>{{ record.Name }}</td>
+        <td><a routerLink="/{{type}}/details/{{record.Id}}">Details</a></td>
+        <td><a *ngIf="record.CouldBeDeleted" (click)="deleteRecord(record.Id)">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

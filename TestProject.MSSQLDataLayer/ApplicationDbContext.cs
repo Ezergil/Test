@@ -74,10 +74,6 @@ namespace TestProject.MSSQLDataLayer
             {
                 throw;
             }
-            finally
-            {
-                Dispose();
-            }
         }
 
         private void UpdateEntityState<TEntity>(TEntity entity, EntityState entityState) where TEntity : BaseEntity
